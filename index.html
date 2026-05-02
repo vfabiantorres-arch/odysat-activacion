@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OdySat Tracker — Activación</title>
+<title>OdySat Tracker — Verificador de Activación</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -18,64 +18,36 @@
     --red-light: #ffe0e0;
     --warning: #e76f51;
     --warning-light: #fff3e0;
+    --blue-light: #f0f4ff;
+    --blue: #4a6fa5;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background: #ffffff;
+    background: var(--white);
     color: var(--black);
-    font-family: 'DM Sans', sans-serif;
+    font-family: "DM Sans", sans-serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
 
-  /* HEADER */
   header {
     border-bottom: 1px solid var(--light-gray);
-    padding: 20px 40px;
+    padding: 16px 40px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .logo-area {
-    display: flex;
-    align-items: center;
-    gap: 0;
+  header img {
+    width: 100%;
+    max-width: 405px;
+    height: auto;
+    display: block;
   }
 
-  .logo-icon {
-    width: 36px;
-    height: 36px;
-  }
-
-  .logo-text {
-    font-family: 'DM Mono', monospace;
-    font-size: 13px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--black);
-  }
-
-  .logo-text span {
-    color: var(--gray);
-    font-weight: 400;
-  }
-
-  .header-badge {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gray);
-    border: 1px solid var(--light-gray);
-    padding: 4px 10px;
-    border-radius: 2px;
-  }
-
-  /* MAIN */
   main {
     flex: 1;
     max-width: 580px;
@@ -84,72 +56,32 @@
     width: 100%;
   }
 
-  /* SCREEN MANAGEMENT */
   .screen { display: none; }
   .screen.active { display: block; }
 
-  /* IMEI SCREEN */
-  .screen-title {
+  /* INTRO */
+  .intro-label {
     font-size: 11px;
-    font-family: 'DM Mono', monospace;
+    font-family: "DM Mono", monospace;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--gray);
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
 
   h1 {
     font-size: 28px;
     font-weight: 500;
     line-height: 1.2;
-    margin-bottom: 12px;
+    margin-bottom: 20px;
     letter-spacing: -0.02em;
   }
 
-  .subtitle {
+  .intro-text {
     font-size: 15px;
-    color: var(--gray);
-    line-height: 1.6;
-    margin-bottom: 48px;
-  }
-
-  .input-group {
-    margin-bottom: 8px;
-  }
-
-  label {
-    display: block;
-    font-size: 11px;
-    font-family: 'DM Mono', monospace;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gray);
-    margin-bottom: 10px;
-  }
-
-  input[type="text"] {
-    width: 100%;
-    padding: 16px 20px;
-    font-size: 18px;
-    font-family: 'DM Mono', monospace;
-    letter-spacing: 0.05em;
-    border: 1.5px solid var(--light-gray);
-    border-radius: 4px;
-    background: #fff;
-    color: var(--black);
-    outline: none;
-    transition: border-color 0.2s;
-  }
-
-  input[type="text"]:focus {
-    border-color: var(--black);
-  }
-
-  .input-hint {
-    font-size: 12px;
-    color: var(--gray);
-    margin-top: 8px;
-    line-height: 1.5;
+    color: #444;
+    line-height: 1.7;
+    margin-bottom: 40px;
   }
 
   .btn-primary {
@@ -160,17 +92,48 @@
     border: none;
     border-radius: 4px;
     font-size: 14px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: "DM Sans", sans-serif;
     font-weight: 500;
     letter-spacing: 0.03em;
     cursor: pointer;
-    margin-top: 24px;
-    transition: background 0.2s, transform 0.1s;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #222; }
+  .btn-primary:disabled { background: var(--light-gray); color: var(--gray); cursor: not-allowed; }
+
+  /* IMEI SCREEN */
+  label {
+    display: block;
+    font-size: 11px;
+    font-family: "DM Mono", monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 10px;
   }
 
-  .btn-primary:hover { background: #222; }
-  .btn-primary:active { transform: scale(0.99); }
-  .btn-primary:disabled { background: var(--light-gray); color: var(--gray); cursor: not-allowed; }
+  input[type="text"] {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 18px;
+    font-family: "DM Mono", monospace;
+    letter-spacing: 0.05em;
+    border: 1.5px solid var(--light-gray);
+    border-radius: 4px;
+    background: #fff;
+    color: var(--black);
+    outline: none;
+    transition: border-color 0.2s;
+    margin-bottom: 8px;
+  }
+  input[type="text"]:focus { border-color: var(--black); }
+
+  .input-hint {
+    font-size: 12px;
+    color: var(--gray);
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
 
   .error-msg {
     background: var(--red-light);
@@ -179,55 +142,61 @@
     border-radius: 0 4px 4px 0;
     font-size: 13px;
     color: var(--red);
-    margin-top: 16px;
+    margin-bottom: 16px;
     display: none;
     line-height: 1.5;
   }
 
-  /* STEPS SCREEN */
+  .loading-wrap {
+    text-align: center;
+    padding: 40px 0;
+    display: none;
+  }
+
+  .spinner {
+    width: 28px;
+    height: 28px;
+    border: 2px solid var(--light-gray);
+    border-top-color: var(--black);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    margin: 0 auto 12px;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .loading-wrap p {
+    font-size: 12px;
+    color: var(--gray);
+    font-family: "DM Mono", monospace;
+  }
+
+  /* CHECKLIST SCREEN */
   .device-header {
     background: var(--black);
     color: var(--white);
     border-radius: 6px;
-    padding: 24px 28px;
-    margin-bottom: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    padding: 20px 24px;
+    margin-bottom: 32px;
   }
 
   .device-name {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
-    letter-spacing: -0.01em;
   }
 
   .device-imei {
-    font-family: 'DM Mono', monospace;
+    font-family: "DM Mono", monospace;
     font-size: 11px;
     color: #888;
     margin-top: 4px;
   }
 
-  .device-check {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #1a1a1a;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #555;
-    font-size: 18px;
-  }
-
-  /* PROGRESS BAR */
   .progress-bar-wrap {
     background: var(--light-gray);
     height: 3px;
     border-radius: 2px;
-    margin-bottom: 40px;
-    overflow: hidden;
+    margin-bottom: 32px;
   }
 
   .progress-bar-fill {
@@ -235,48 +204,39 @@
     background: var(--black);
     border-radius: 2px;
     transition: width 0.4s ease;
+    width: 0%;
   }
 
   /* STEP CARD */
   .step-card {
     border: 1.5px solid var(--light-gray);
     border-radius: 6px;
+    margin-bottom: 12px;
     overflow: hidden;
-    margin-bottom: 16px;
     transition: border-color 0.2s;
   }
 
-  .step-card.active {
-    border-color: var(--black);
-  }
-
-  .step-card.completed {
-    border-color: var(--green);
-    background: #fafff9;
-  }
-
-  .step-card.locked {
-    opacity: 0.4;
-  }
+  .step-card.active { border-color: var(--black); }
+  .step-card.completed { border-color: var(--green); background: #fafff9; }
+  .step-card.locked { opacity: 0.4; pointer-events: none; }
 
   .step-header {
-    padding: 20px 24px;
+    padding: 18px 20px;
     display: flex;
     align-items: flex-start;
-    gap: 16px;
-    cursor: pointer;
+    gap: 14px;
   }
 
   .step-number {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
     border: 1.5px solid var(--light-gray);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
     flex-shrink: 0;
     transition: all 0.2s;
   }
@@ -291,93 +251,78 @@
     border-color: var(--green);
     background: var(--green);
     color: var(--white);
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .step-title-wrap { flex: 1; }
 
   .step-label {
-    font-size: 11px;
-    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-family: "DM Mono", monospace;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--gray);
-    margin-bottom: 4px;
+    margin-bottom: 3px;
   }
 
   .step-title {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     line-height: 1.3;
   }
 
   .step-body {
-    padding: 0 24px 24px 68px;
+    padding: 0 20px 20px 60px;
     display: none;
   }
 
-  .step-card.active .step-body {
-    display: block;
-  }
+  .step-card.active .step-body { display: block; }
 
   .step-body p {
     font-size: 14px;
     line-height: 1.7;
     color: #333;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
-  .step-body p:last-of-type { margin-bottom: 0; }
+  .step-body ul {
+    margin: 10px 0 10px 16px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #333;
+  }
 
   .warning-box {
     background: var(--warning-light);
     border-left: 3px solid var(--warning);
-    padding: 12px 16px;
+    padding: 11px 14px;
     border-radius: 0 4px 4px 0;
     font-size: 13px;
     color: #7c4a1e;
-    margin: 16px 0;
+    margin: 12px 0;
     line-height: 1.6;
   }
 
-  .warning-box strong { color: var(--warning); }
-
   .info-box {
-    background: #f0f4ff;
-    border-left: 3px solid #4a6fa5;
-    padding: 12px 16px;
+    background: var(--blue-light);
+    border-left: 3px solid var(--blue);
+    padding: 11px 14px;
     border-radius: 0 4px 4px 0;
     font-size: 13px;
     color: #2c3e6e;
-    margin: 16px 0;
+    margin: 12px 0;
     line-height: 1.6;
   }
 
-  .app-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--black);
-    color: var(--white);
-    padding: 10px 16px;
-    border-radius: 4px;
-    font-size: 13px;
-    font-weight: 500;
-    margin: 8px 4px 8px 0;
-    text-decoration: none;
-  }
-
-  .app-badge:hover { background: #222; }
-
   .credentials-box {
-    background: #ffffff;
+    background: #f8f8f6;
     border: 1px solid var(--light-gray);
     border-radius: 4px;
-    padding: 16px 20px;
-    margin: 16px 0;
+    padding: 14px 18px;
+    margin: 12px 0;
   }
 
-  .credentials-box .cred-row {
+  .cred-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -386,31 +331,40 @@
     font-size: 13px;
   }
 
-  .credentials-box .cred-row:last-child { border-bottom: none; }
+  .cred-row:last-child { border-bottom: none; }
 
-  .credentials-box .cred-label {
+  .cred-label {
     color: var(--gray);
     font-size: 11px;
-    font-family: 'DM Mono', monospace;
+    font-family: "DM Mono", monospace;
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
 
-  .credentials-box .cred-value {
-    font-family: 'DM Mono', monospace;
+  .cred-value {
+    font-family: "DM Mono", monospace;
     font-size: 13px;
     font-weight: 500;
   }
 
+  .app-link {
+    display: inline-block;
+    color: var(--black);
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: underline;
+    margin: 4px 0;
+  }
+
   .btn-confirm {
-    margin-top: 20px;
-    padding: 13px 24px;
+    margin-top: 16px;
+    padding: 12px 20px;
     background: var(--black);
     color: var(--white);
     border: none;
     border-radius: 4px;
     font-size: 13px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: "DM Sans", sans-serif;
     font-weight: 500;
     cursor: pointer;
     transition: background 0.2s;
@@ -421,87 +375,91 @@
 
   .btn-confirm:hover { background: #222; }
 
-  /* FINAL SCREEN */
+  .btn-back {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: transparent;
+    color: var(--gray);
+    border: 1.5px solid var(--light-gray);
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: "DM Sans", sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-back:hover { border-color: var(--black); color: var(--black); }
+
+  .step-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 16px;
+  }
+
+  /* FINAL */
   .final-wrap {
     text-align: center;
     padding: 40px 0;
   }
 
   .final-icon {
-    width: 72px;
-    height: 72px;
+    width: 68px;
+    height: 68px;
     background: var(--green-light);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
-    margin: 0 auto 32px;
+    font-size: 30px;
+    margin: 0 auto 28px;
   }
 
   .final-wrap h2 {
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 500;
     letter-spacing: -0.02em;
     margin-bottom: 12px;
   }
 
   .final-wrap p {
-    font-size: 15px;
+    font-size: 14px;
     color: var(--gray);
     line-height: 1.6;
-    max-width: 400px;
-    margin: 0 auto 32px;
+    max-width: 420px;
+    margin: 0 auto 28px;
   }
 
   .btn-whatsapp {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     background: #25d366;
     color: #fff;
-    padding: 16px 32px;
+    padding: 15px 28px;
     border-radius: 4px;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
     text-decoration: none;
     transition: background 0.2s;
   }
 
   .btn-whatsapp:hover { background: #20ba5a; }
+  .btn-whatsapp svg { width: 20px; height: 20px; fill: #fff; }
 
-  .btn-whatsapp svg { width: 22px; height: 22px; fill: #fff; }
-
-  /* LOADING */
-  .loading-wrap {
-    text-align: center;
-    padding: 60px 0;
-    display: none;
-  }
-
-  .spinner {
-    width: 32px;
-    height: 32px;
-    border: 2px solid var(--light-gray);
-    border-top-color: var(--black);
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-    margin: 0 auto 16px;
-  }
-
-  @keyframes spin { to { transform: rotate(360deg); } }
-
-  .loading-wrap p {
-    font-size: 13px;
+  .horario {
+    margin-top: 16px;
+    font-size: 12px;
     color: var(--gray);
-    font-family: 'DM Mono', monospace;
-    letter-spacing: 0.05em;
+    font-family: "DM Mono", monospace;
   }
 
-  /* FOOTER */
   footer {
     border-top: 1px solid var(--light-gray);
-    padding: 20px 40px;
+    padding: 16px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -510,50 +468,54 @@
   .footer-text {
     font-size: 11px;
     color: var(--gray);
-    font-family: 'DM Mono', monospace;
-    letter-spacing: 0.05em;
+    font-family: "DM Mono", monospace;
   }
 
   .footer-link {
     font-size: 11px;
     color: var(--gray);
     text-decoration: none;
-    font-family: 'DM Mono', monospace;
+    font-family: "DM Mono", monospace;
   }
 
   .footer-link:hover { color: var(--black); }
 
   @media (max-width: 600px) {
-    header, footer { padding: 16px 20px; }
-    main { padding: 40px 20px 60px; }
+    header, footer { padding: 14px 20px; }
+    main { padding: 36px 20px 60px; }
     h1 { font-size: 22px; }
-    .step-body { padding: 0 16px 20px 52px; }
+    .step-body { padding: 0 16px 18px 48px; }
   }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo-area">
-    <img src="data:image/png;base64,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" style="width:100%;max-width:540px;height:auto;display:block;margin:0 auto;">
-    
-  </div>
-  
+  <img src="data:image/png;base64,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" alt="OdySat Tracker">
 </header>
 
 <main>
 
-  <!-- SCREEN: IMEI -->
-  <div class="screen active" id="screen-imei">
-    <div class="screen-title">Paso 1 de 2 — Identificación</div>
-    <h1>Activá tu rastreador</h1>
-    <p class="subtitle">Ingresá el número IMEI de tu dispositivo para comenzar la puesta en marcha.</p>
+  <!-- SCREEN: INTRODUCCIÓN -->
+  <div class="screen active" id="screen-intro">
+    <div class="intro-label">Verificador de activación</div>
+    <h1>Verificá la puesta en marcha de tu OdySat Tracker</h1>
+    <p class="intro-text">
+      Si ya seguiste el instructivo que recibiste junto con tu dispositivo, este verificador te va a confirmar en pocos pasos que todo está correctamente hecho y listo para funcionar.<br><br>
+      Si todavía no leíste el instructivo, este es el momento de hacerlo. Lo vas a necesitar para completar cada paso del verificador.
+    </p>
+    <button class="btn-primary" onclick="showScreen('screen-imei')">Comenzar verificación</button>
+  </div>
 
-    <div class="input-group">
-      <label for="imei-input">Número IMEI</label>
-      <input type="text" id="imei-input" placeholder="000000000000000" maxlength="15" autocomplete="off" inputmode="numeric">
-      <p class="input-hint">El IMEI es el número de identificación de tu dispositivo. Lo encontrás en la etiqueta dentro o en la parte posterior del rastreador.</p>
-    </div>
+  <!-- SCREEN: IMEI -->
+  <div class="screen" id="screen-imei">
+    <div class="intro-label">Paso 1 — Identificación del dispositivo</div>
+    <h1>Ingresá el número IMEI</h1>
+    <p class="intro-text">Lo encontrás en la etiqueta dentro o en la parte posterior del rastreador.</p>
+
+    <label for="imei-input">Número IMEI</label>
+    <input type="text" id="imei-input" placeholder="000000000000000" maxlength="20" autocomplete="off" inputmode="numeric">
+    <p class="input-hint">Solo números, sin espacios ni guiones.</p>
 
     <div class="error-msg" id="error-msg"></div>
 
@@ -565,18 +527,15 @@
     </div>
   </div>
 
-  <!-- SCREEN: STEPS -->
-  <div class="screen" id="screen-steps">
+  <!-- SCREEN: CHECKLIST -->
+  <div class="screen" id="screen-checklist">
     <div class="device-header">
-      <div>
-        <div class="device-name" id="device-name-display">—</div>
-        <div class="device-imei" id="device-imei-display">IMEI: —</div>
-      </div>
-      <div class="device-check">◎</div>
+      <div class="device-name" id="device-name-display">—</div>
+      <div class="device-imei" id="device-imei-display">IMEI: —</div>
     </div>
 
     <div class="progress-bar-wrap">
-      <div class="progress-bar-fill" id="progress-fill" style="width: 0%"></div>
+      <div class="progress-bar-fill" id="progress-fill"></div>
     </div>
 
     <div id="steps-container"></div>
@@ -586,12 +545,13 @@
   <div class="screen" id="screen-final">
     <div class="final-wrap">
       <div class="final-icon">✓</div>
-      <h2>¡Listo para usar!</h2>
-      <p>Tu <span id="final-device-name"></span> completó la puesta en marcha correctamente. Ahora comunicate con nuestro equipo técnico para finalizar la configuración.</p>
+      <h2>¡Tu rastreador está en marcha!</h2>
+      <p>Comunicate con nuestro equipo técnico para que un especialista te enseñe a usarlo de manera eficiente según tu necesidad.</p>
       <a href="#" id="btn-whatsapp" class="btn-whatsapp">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
         Contactar soporte técnico
       </a>
+      <p class="horario">Lunes a viernes de 9 a 13hs<br>Fuera de ese horario respondemos a la brevedad</p>
     </div>
   </div>
 
@@ -603,413 +563,159 @@
 </footer>
 
 <script>
-// ─── CONFIG ───────────────────────────────────────────────────────────────────
-const SHEET_ID = '1tcPYRlPLhv4KOcl_2wgIIZJJBMuyo7LfQcOPx5dHkQM';
-const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Sheet1`;
-const WHATSAPP_NUMBER = '5491132550484';
+const SHEET_ID = "1tcPYRlPLhv4KOcl_2wgIIZJJBMuyo7LfQcOPx5dHkQM";
+const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv`;
+const WHATSAPP_NUMBER = "5491132550484";
 
-// ─── STEPS POR MODELO ─────────────────────────────────────────────────────────
-const STEPS = {
-  G51: [
-    {
-      label: 'Antes de empezar',
-      title: 'Prepará una tarjeta nano SIM nueva',
-      content: `
-        <p>Necesitás una tarjeta <strong>nano SIM nueva</strong> con <strong>servicio prepago</strong>, solicitada en sucursal de <strong>Claro, Personal o Movistar</strong>.</p>
-        <div class="warning-box"><strong>Importante:</strong> Las SIM vendidas en kioscos y accesorios de telefonía no son recomendables para este dispositivo. Solo en sucursal oficial.</div>
-      `
-    },
-    {
-      label: 'Activación de la SIM',
-      title: 'Activá la SIM en un teléfono',
-      content: `
-        <p>Colocá la SIM en un teléfono y seguí las instrucciones en pantalla de tu compañía para activarla.</p>
-        <div class="warning-box"><strong>⚠ Atención:</strong> Una vez activada, no hagas llamadas, no mandes mensajes de texto y no navegues por internet. La SIM debe quedar sin uso.</div>
-        <p>Cargale crédito a la SIM ya activada.</p>
-      `
-    },
-    {
-      label: 'Instalación',
-      title: 'Colocá la SIM en el rastreador',
-      content: `
-        <p>Abrí el slot de la SIM con cuidado: deslizá horizontalmente para destrabar, colocá el chip según la imagen del dispositivo, bajá la tapa y deslizá para trabar.</p>
-        <div class="warning-box"><strong>Precaución:</strong> Manipulá el slot metálico con cuidado para no dañarlo.</div>
-      `
-    },
-    {
-      label: 'Carga',
-      title: 'Cargá la batería del dispositivo',
-      content: `
-        <p>Conectá el <strong>cable magnético</strong> al dispositivo y enchufalo a un cargador USB. Esperá a que la batería tenga carga suficiente antes de continuar.</p>
-      `
-    },
-    {
-      label: 'Aplicación',
-      title: 'Descargá la app 365GPS',
-      content: `
-        <p>Descargá la aplicación oficial de seguimiento:</p>
-        <a href="https://play.google.com/store/apps/details?id=com.tracking365" target="_blank" class="app-badge">▶ Android — 365GPS</a>
-        <a href="https://apps.apple.com/app/365gps/id918801220" target="_blank" class="app-badge">⬡ iOS — 365GPS</a>
-      `
-    },
-    {
-      label: 'Vinculación',
-      title: 'Iniciá sesión en la app',
-      content: `
-        <div class="credentials-box">
-          <div class="cred-row">
-            <span class="cred-label">ID de usuario</span>
-            <span class="cred-value">Número IMEI (15 dígitos)</span>
-          </div>
-          <div class="cred-row">
-            <span class="cred-label">Contraseña</span>
-            <span class="cred-value">Últimos 6 dígitos del IMEI o 123456</span>
-          </div>
-        </div>
-        <p>El IMEI lo encontrás en la etiqueta dentro del dispositivo.</p>
-      `
-    }
-  ],
+const APP_LINKS = {
+  "365GPS": "https://odiseaestore.blogspot.com/2023/06/descarga-de-app-365gps.html",
+  "GPSSPEEDLIMITER": "https://odiseaestore.blogspot.com/2025/04/gps-speed-limiter.html"
+};
 
-  G50S: [
-    {
-      label: 'Antes de empezar',
-      title: 'Prepará una tarjeta nano SIM nueva',
-      content: `
-        <p>Necesitás una tarjeta <strong>nano SIM nueva</strong> con <strong>servicio prepago</strong>, solicitada en sucursal de tu compañía de preferencia.</p>
-        <div class="warning-box"><strong>Importante:</strong> Las SIM vendidas en kioscos y accesorios de telefonía no son recomendables para este dispositivo. Solo en sucursal oficial.</div>
-      `
-    },
-    {
-      label: 'Activación de la SIM',
-      title: 'Activá la SIM en un teléfono',
-      content: `
-        <p>Colocá la SIM en un teléfono y seguí las instrucciones en pantalla de tu compañía para activarla.</p>
-        <div class="warning-box"><strong>⚠ Atención:</strong> Una vez activada, no hagas llamadas, no mandes mensajes de texto y no navegues por internet. La SIM debe quedar sin uso.</div>
-        <p>Cargale crédito a la SIM ya activada.</p>
-      `
-    },
-    {
-      label: 'Instalación',
-      title: 'Colocá la SIM en el rastreador',
-      content: `
-        <p>Abrí el slot de la SIM con cuidado: deslizá horizontalmente para destrabar, colocá el chip según la imagen del dispositivo, bajá la tapa y deslizá para trabar.</p>
-        <div class="warning-box"><strong>Precaución:</strong> Manipulá el slot metálico con cuidado para no dañarlo.</div>
-      `
-    },
-    {
-      label: 'Encendido',
-      title: 'Encendé el dispositivo',
-      content: `
-        <p>Mantené presionado el botón de encendido durante <strong>6 segundos</strong>, o hasta que las luces del dispositivo se enciendan.</p>
-      `
-    },
-    {
-      label: 'Aplicación',
-      title: 'Descargá la app 365GPS',
-      content: `
-        <p>Descargá la aplicación oficial de seguimiento:</p>
-        <a href="https://play.google.com/store/apps/details?id=com.tracking365" target="_blank" class="app-badge">▶ Android — 365GPS</a>
-        <a href="https://apps.apple.com/app/365gps/id918801220" target="_blank" class="app-badge">⬡ iOS — 365GPS</a>
-      `
-    },
-    {
-      label: 'Vinculación',
-      title: 'Iniciá sesión en la app',
-      content: `
-        <div class="credentials-box">
-          <div class="cred-row">
-            <span class="cred-label">ID de usuario</span>
-            <span class="cred-value">Número IMEI (15 dígitos)</span>
-          </div>
-          <div class="cred-row">
-            <span class="cred-label">Contraseña</span>
-            <span class="cred-value">Últimos 6 dígitos del IMEI</span>
-          </div>
-        </div>
-        <p>El IMEI lo encontrás en la etiqueta del dispositivo.</p>
-      `
-    }
-  ],
-
-  G50L: [
-    {
-      label: 'Antes de empezar',
-      title: 'Prepará una tarjeta nano SIM nueva',
-      content: `
-        <p>Necesitás una tarjeta <strong>nano SIM nueva</strong> con <strong>servicio prepago</strong>, solicitada en sucursal de tu compañía de preferencia.</p>
-        <div class="warning-box"><strong>Importante:</strong> Las SIM vendidas en kioscos y accesorios de telefonía no son recomendables para este dispositivo. Solo en sucursal oficial.</div>
-      `
-    },
-    {
-      label: 'Activación de la SIM',
-      title: 'Activá la SIM en un teléfono',
-      content: `
-        <p>Colocá la SIM en un teléfono y seguí las instrucciones en pantalla de tu compañía para activarla.</p>
-        <div class="warning-box"><strong>⚠ Atención:</strong> Una vez activada, no hagas llamadas, no mandes mensajes de texto y no navegues por internet. La SIM debe quedar sin uso.</div>
-        <p>Cargale crédito a la SIM ya activada.</p>
-      `
-    },
-    {
-      label: 'Instalación',
-      title: 'Colocá la SIM en el rastreador',
-      content: `
-        <p>Abrí el slot de la SIM con cuidado: deslizá horizontalmente para destrabar, colocá el chip según la imagen del dispositivo, bajá la tapa y deslizá para trabar.</p>
-        <div class="warning-box"><strong>Precaución:</strong> Manipulá el slot metálico con cuidado para no dañarlo.</div>
-      `
-    },
-    {
-      label: 'Encendido',
-      title: 'Encendé el dispositivo',
-      content: `
-        <p>Mantené presionado el botón de encendido durante <strong>6 segundos</strong>, o hasta que las luces del dispositivo se enciendan.</p>
-      `
-    },
-    {
-      label: 'Aplicación',
-      title: 'Descargá la app 365GPS',
-      content: `
-        <p>Descargá la aplicación oficial de seguimiento:</p>
-        <a href="https://play.google.com/store/apps/details?id=com.tracking365" target="_blank" class="app-badge">▶ Android — 365GPS</a>
-        <a href="https://apps.apple.com/app/365gps/id918801220" target="_blank" class="app-badge">⬡ iOS — 365GPS</a>
-      `
-    },
-    {
-      label: 'Vinculación',
-      title: 'Iniciá sesión en la app',
-      content: `
-        <div class="credentials-box">
-          <div class="cred-row">
-            <span class="cred-label">ID de usuario</span>
-            <span class="cred-value">Número IMEI (15 dígitos)</span>
-          </div>
-          <div class="cred-row">
-            <span class="cred-label">Contraseña</span>
-            <span class="cred-value">Últimos 6 dígitos del IMEI</span>
-          </div>
-        </div>
-        <p>El IMEI lo encontrás en la etiqueta del dispositivo.</p>
-      `
-    }
-  ],
-
-  ST909: [
-    {
-      label: 'Antes de empezar',
-      title: 'Prepará una tarjeta micro SIM nueva',
-      content: `
-        <p>Necesitás una tarjeta <strong>micro SIM nueva</strong> con <strong>servicio prepago</strong>, solicitada en sucursal de tu compañía de preferencia.</p>
-        <p>La tarjeta SIM debe estar activada. Colocala en un teléfono, marcá el número correspondiente que viene junto con la tarjeta y seguí las instrucciones en pantalla.</p>
-        <div class="warning-box"><strong>⚠ Atención:</strong> Una vez activada, no hagas llamadas, no mandes mensajes de texto y no navegues por internet.</div>
-      `
-    },
-    {
-      label: 'Instalación',
-      title: 'Colocá la SIM en el rastreador',
-      content: `
-        <p>Extraé los tornillos con el destornillador incluido, retirá la tapa y la protección. Colocá la SIM según la imagen y volvé a colocar la protección y la tapa.</p>
-        <div class="warning-box"><strong>Precaución:</strong> Manipulá el slot con cuidado para no dañarlo.</div>
-      `
-    },
-    {
-      label: 'Carga',
-      title: 'Cargá la batería del dispositivo',
-      content: `
-        <p>Conectá el cable <strong>USB-C</strong> al dispositivo y enchufalo a un cargador USB. Esperá a que la batería tenga carga suficiente antes de continuar.</p>
-      `
-    },
-    {
-      label: 'Aplicación',
-      title: 'Descargá la app GPS Speed Limiter',
-      content: `
-        <p>Descargá la aplicación oficial de seguimiento:</p>
-        <a href="https://play.google.com/store/apps/details?id=com.gps.speedlimiter" target="_blank" class="app-badge">▶ Android — GPS Speed Limiter</a>
-        <a href="https://apps.apple.com/app/gps-speed-limiter/id1234567890" target="_blank" class="app-badge">⬡ iOS — GPS Speed Limiter</a>
-      `
-    },
-    {
-      label: 'Vinculación',
-      title: 'Vinculá el rastreador con la app',
-      content: `
-        <div class="credentials-box">
-          <div class="cred-row">
-            <span class="cred-label">ID de usuario</span>
-            <span class="cred-value">Etiqueta en la caja o parte posterior</span>
-          </div>
-          <div class="cred-row">
-            <span class="cred-label">Contraseña</span>
-            <span class="cred-value">123456</span>
-          </div>
-        </div>
-      `
-    }
-  ],
-
-  TK303: [
-    {
-      label: 'Antes de empezar',
-      title: 'Prepará una tarjeta micro SIM nueva',
-      content: `
-        <p>Necesitás una tarjeta <strong>micro SIM nueva</strong> con <strong>servicio prepago</strong>, solicitada en sucursal de tu compañía de preferencia.</p>
-        <div class="warning-box"><strong>Importante:</strong> Las SIM vendidas en kioscos y accesorios de telefonía no son recomendables para este dispositivo.</div>
-        <p>La SIM debe estar activada. Colocala en un teléfono y seguí las instrucciones en pantalla.</p>
-        <div class="warning-box"><strong>⚠ Atención:</strong> Una vez activada, no hagas llamadas, no mandes mensajes de texto y no navegues por internet.</div>
-        <p>Cargale crédito a la SIM activada.</p>
-      `
-    },
-    {
-      label: 'Instalación SIM',
-      title: 'Colocá la SIM en el rastreador',
-      content: `
-        <p>Deslizá horizontalmente para destrabar el slot metálico. Colocá el chip según la imagen del dispositivo. Bajá la tapa y deslizá para trabar.</p>
-        <div class="warning-box"><strong>Precaución:</strong> Manipulá el slot metálico con cuidado para no dañarlo.</div>
-      `
-    },
-    {
-      label: 'Instalación vehicular',
-      title: 'Conectá el dispositivo al vehículo',
-      content: `
-        <p>El TK303 se conecta a la <strong>red eléctrica del vehículo</strong>. La instalación debe realizarse con el vehículo apagado.</p>
-        <div class="info-box">Nuestro equipo técnico te guiará paso a paso en la instalación eléctrica cuando te comuniques al finalizar este proceso.</div>
-      `
-    },
-    {
-      label: 'Aplicación',
-      title: 'Descargá la app GPS Speed Limiter',
-      content: `
-        <p>Descargá la aplicación oficial:</p>
-        <a href="https://play.google.com/store/apps/details?id=com.gps.speedlimiter" target="_blank" class="app-badge">▶ Android — GPS Speed Limiter</a>
-        <a href="https://apps.apple.com/app/gps-speed-limiter/id1234567890" target="_blank" class="app-badge">⬡ iOS — GPS Speed Limiter</a>
-      `
-    },
-    {
-      label: 'Vinculación',
-      title: 'Iniciá sesión en la app',
-      content: `
-        <div class="credentials-box">
-          <div class="cred-row">
-            <span class="cred-label">Cuenta</span>
-            <span class="cred-value">Número en el lateral del dispositivo</span>
-          </div>
-          <div class="cred-row">
-            <span class="cred-label">Contraseña</span>
-            <span class="cred-value">123456</span>
-          </div>
-        </div>
-        <p>Web alternativa: <strong>www.ytwl-gps.com</strong></p>
-      `
-    }
-  ],
-
-  OBD2: [
-    {
-      label: 'Antes de empezar',
-      title: 'Prepará una tarjeta nano SIM nueva',
-      content: `
-        <p>Necesitás una tarjeta <strong>nano SIM nueva</strong> con <strong>servicio prepago</strong>, solicitada en sucursal de Claro, Movistar o Personal.</p>
-        <div class="warning-box"><strong>Importante:</strong> Solo en sucursal oficial. Las SIM de kioscos no son compatibles.</div>
-        <p>La SIM debe estar activada: colocala en un teléfono y seguí las instrucciones en pantalla.</p>
-        <div class="warning-box"><strong>⚠ Atención:</strong> Una vez activada, no hagas llamadas, no mandes mensajes ni navegues por internet.</div>
-        <p>Cargale crédito a la SIM activada.</p>
-      `
-    },
-    {
-      label: 'Instalación SIM',
-      title: 'Colocá la SIM en el módulo OBD2',
-      content: `
-        <p>Deslizá el slot horizontalmente para destrabar. Colocá el chip prestando especial atención a la <strong>posición de la esquina cortada</strong>. Bajá la tapa y deslizá para trabar.</p>
-        <div class="warning-box"><strong>Precaución:</strong> La orientación del chip es crítica. Verificá la esquina cortada antes de cerrar el slot.</div>
-      `
-    },
-    {
-      label: 'Armado',
-      title: 'Armá la carcasa del rastreador',
-      content: `
-        <p>Colocá la carcasa del rastreador con las <strong>dos etiquetas para el mismo lado</strong>. Presioná hasta que quede bien trabada.</p>
-      `
-    },
-    {
-      label: 'Conexión vehicular',
-      title: 'Conectá al puerto OBD2 del vehículo',
-      content: `
-        <p>El puerto OBD2 se encuentra generalmente debajo del tablero, del lado del conductor. Conectá el dispositivo directamente al puerto.</p>
-        <div class="info-box">Nuestro equipo técnico te confirmará que la conexión es correcta cuando te comuniques al finalizar.</div>
-      `
-    },
-    {
-      label: 'Aplicación',
-      title: 'Descargá la app GPS Speed Limiter',
-      content: `
-        <p>Descargá la aplicación oficial:</p>
-        <a href="https://play.google.com/store/apps/details?id=com.gps.speedlimiter" target="_blank" class="app-badge">▶ Android — GPS Speed Limiter</a>
-        <a href="https://apps.apple.com/app/gps-speed-limiter/id1234567890" target="_blank" class="app-badge">⬡ iOS — GPS Speed Limiter</a>
-      `
-    },
-    {
-      label: 'Vinculación',
-      title: 'Iniciá sesión en la app',
-      content: `
-        <div class="credentials-box">
-          <div class="cred-row">
-            <span class="cred-label">ID de usuario</span>
-            <span class="cred-value">Número IMEI (etiqueta de 15 dígitos)</span>
-          </div>
-          <div class="cred-row">
-            <span class="cred-label">Contraseña</span>
-            <span class="cred-value">123456</span>
-          </div>
-        </div>
-      `
-    }
-  ]
+const MODEL_APP = {
+  G51: "365GPS", G50S: "365GPS", G50L: "365GPS",
+  ST909: "GPSSPEEDLIMITER", ST910: "GPSSPEEDLIMITER",
+  TK303: "GPSSPEEDLIMITER", OBD2: "GPSSPEEDLIMITER"
 };
 
 const DEVICE_NAMES = {
-  G51: 'OdySat Tracker G51 — Mascotas',
-  G50S: 'OdySat Tracker G50S',
-  G50L: 'OdySat Tracker G50L',
-  ST909: 'OdySat Tracker ST909 Pro',
-  TK303: 'OdySat Tracker TK303',
-  OBD2: 'OdySat Tracker OBD2'
+  G51: "OdySat Tracker G51 — Mascotas",
+  G50S: "OdySat Tracker G50S",
+  G50L: "OdySat Tracker G50L",
+  ST909: "OdySat Tracker ST909 Pro",
+  ST910: "OdySat Tracker ST910",
+  TK303: "OdySat Tracker TK303",
+  OBD2: "OdySat Tracker OBD2"
 };
 
-// ─── STATE ────────────────────────────────────────────────────────────────────
+const POWER_INSTRUCTIONS = {
+  G51: `Mantené presionado el botón marcado con el símbolo de encendido (círculo con línea) hasta que las luces se apaguen. Para encender, mantené presionado el mismo botón hasta que las luces se enciendan.`,
+  G50S: `Mantené presionado el botón marcado con el símbolo de encendido hasta que las luces se apaguen. Para encender, mantené presionado hasta que las luces se enciendan.`,
+  G50L: `Mantené presionado el botón marcado con el símbolo de encendido hasta que las luces se apaguen. Para encender, mantené presionado hasta que las luces se enciendan.`,
+  ST909: `Mantené presionado el botón de goma del frente hasta que las luces se apaguen. Para encender, tocá el mismo botón con un toque corto.`,
+  ST910: `Mantené presionado el botón de goma del frente hasta que las luces se apaguen. Para encender, tocá el mismo botón con un toque corto.`,
+  TK303: `El TK303 se apaga y enciende junto con el vehículo. Llevá el vehículo a un lugar a cielo abierto.`,
+  OBD2: `El OBD2 se apaga y enciende junto con el vehículo. Llevá el vehículo a un lugar a cielo abierto.`
+};
+
+let currentModel = "";
+let currentIMEI = "";
 let currentStep = 0;
 let totalSteps = 0;
 let completedSteps = [];
-let currentModel = '';
-let currentIMEI = '';
 
-// ─── VERIFY IMEI ──────────────────────────────────────────────────────────────
+function getSteps(model, imei) {
+  const app = MODEL_APP[model];
+  const appName = app === "365GPS" ? "365GPS" : "GPS Speed Limiter";
+  const appLink = APP_LINKS[app];
+  const lastSix = imei.slice(-6);
+  const password = app === "365GPS" ? lastSix : "123456";
+  const isVehicular = model === "TK303" || model === "OBD2";
+
+  return [
+    {
+      label: "Tarjeta SIM",
+      title: "¿La tarjeta SIM cumple estas tres condiciones?",
+      content: `
+        <ul>
+          <li>Es una tarjeta SIM con <strong>servicio prepago</strong></li>
+          <li>Está <strong>activada</strong></li>
+          <li>Tiene <strong>crédito cargado</strong> (mínimo $4.000)</li>
+        </ul>
+        <div class="warning-box">Si alguna de estas condiciones no se cumple, revisá la sección "Preparación de la SIM" en el instructivo antes de continuar.</div>
+      `
+    },
+    {
+      label: "Colocación de la SIM",
+      title: "¿Colocaste la SIM correctamente en el rastreador?",
+      content: `
+        <p>Verificá que la posición del chip coincida con la imagen del instructivo antes de cerrar el slot.</p>
+        <div class="warning-box">Una SIM mal colocada es una de las causas más frecuentes de falla. Verificá antes de continuar.</div>
+      `
+    },
+    {
+      label: "Carga de batería",
+      title: isVehicular
+        ? "¿El dispositivo está conectado correctamente al vehículo?"
+        : "¿Cargaste la batería durante al menos 1 hora?",
+      content: isVehicular
+        ? `<p>Verificá que la conexión esté firme y correcta antes de continuar.</p>`
+        : `<p>El dispositivo enciende automáticamente al conectarlo al cargador. Para esta primera vez, dejalo cargando un <strong>mínimo de 1 hora</strong> antes de continuar.</p>
+           <div class="info-box">Si lo encendés con poca batería, puede apagarse durante el proceso de conexión y generar confusión.</div>`
+    },
+    {
+      label: "Aplicación",
+      title: "¿Ya descargaste la aplicación?",
+      content: `
+        <p>Si todavía no la descargaste, podés hacerlo desde aquí:</p>
+        <p><a href="${appLink}" target="_blank" class="app-link">Descargar ${appName} desde aquí →</a></p>
+      `
+    },
+    {
+      label: "Vinculación",
+      title: "Vinculá la app con tu rastreador",
+      content: `
+        <p>Abrí la app e ingresá los siguientes datos:</p>
+        <div class="credentials-box">
+          <div class="cred-row">
+            <span class="cred-label">ID de usuario / IMEI</span>
+            <span class="cred-value">${imei}</span>
+          </div>
+          <div class="cred-row">
+            <span class="cred-label">Contraseña</span>
+            <span class="cred-value">${password}</span>
+          </div>
+        </div>
+      `
+    },
+    {
+      label: "Verificación de ubicación",
+      title: "Verificá que el rastreador aparezca Online en la app",
+      content: `
+        <p>Es normal que en este momento el rastreador todavía no muestre su ubicación. Necesita conectarse a la red telefónica y GPS por primera vez, y para eso debe estar a cielo abierto.</p>
+        <div class="info-box"><strong>Instrucciones de apagado y encendido:</strong><br>${POWER_INSTRUCTIONS[model]}</div>
+        <ul>
+          <li>Apagá el dispositivo</li>
+          <li>Llevalo a un lugar exterior, sin techo</li>
+          <li>Encendelo</li>
+          <li>Dejalo al menos <strong>20 minutos</strong> en ese lugar</li>
+          <li>Abrí la app y esperá a que aparezca como <strong>Online</strong></li>
+        </ul>
+        <p>No necesitás tocar nada en la app. Solo observá hasta que muestre que está conectado.</p>
+      `
+    }
+  ];
+}
+
 async function verificarIMEI() {
-  const imei = document.getElementById('imei-input').value.trim();
-  const errorEl = document.getElementById('error-msg');
-  const btnEl = document.getElementById('btn-verificar');
-  const loadingEl = document.getElementById('loading-imei');
+  const imei = document.getElementById("imei-input").value.trim();
+  const errorEl = document.getElementById("error-msg");
+  const btnEl = document.getElementById("btn-verificar");
+  const loadingEl = document.getElementById("loading-imei");
 
-  errorEl.style.display = 'none';
+  errorEl.style.display = "none";
 
   if (imei.length < 5 || !/^\d+$/.test(imei)) {
-    errorEl.textContent = 'El IMEI debe contener solo números.';
-    errorEl.style.display = 'block';
+    errorEl.textContent = "El IMEI debe contener solo números.";
+    errorEl.style.display = "block";
     return;
   }
 
-  btnEl.style.display = 'none';
-  loadingEl.style.display = 'block';
+  btnEl.style.display = "none";
+  loadingEl.style.display = "block";
 
   try {
     const response = await fetch(`${SHEET_URL}&cb=${Date.now()}`);
     const text = await response.text();
-    const rows = text.trim().split('\n').slice(1);
+    const rows = text.trim().split("\n").slice(1);
 
     let found = false;
-    let model = '';
+    let model = "";
 
     for (const row of rows) {
-      const cols = row.split(',');
-      const rowIMEI = cols[0]?.replace(/"/g, '').trim();
-      const rowModel = cols[1]?.replace(/"/g, '').trim().toUpperCase();
+      const cols = row.split(",");
+      const rowIMEI = cols[0]?.replace(/"/g, "").trim();
+      const rowModel = cols[1]?.replace(/"/g, "").trim().toUpperCase();
       if (rowIMEI === imei) {
         found = true;
         model = rowModel;
@@ -1018,49 +724,40 @@ async function verificarIMEI() {
     }
 
     if (!found) {
-      errorEl.innerHTML = 'Este IMEI no está registrado. Verificá que ingresaste el número correcto.<br><small>Si creés que hay un error, contactanos por WhatsApp.</small>';
-      errorEl.style.display = 'block';
-      btnEl.style.display = 'block';
-      loadingEl.style.display = 'none';
-      return;
-    }
-
-    if (!STEPS[model]) {
-      errorEl.textContent = 'Modelo no reconocido. Contactanos para asistencia.';
-      errorEl.style.display = 'block';
-      btnEl.style.display = 'block';
-      loadingEl.style.display = 'none';
+      errorEl.innerHTML = "Este IMEI no está registrado. Verificá que ingresaste el número correcto.<br><small>Si creés que hay un error, contactanos por WhatsApp al 011 3255-0484.</small>";
+      errorEl.style.display = "block";
+      btnEl.style.display = "block";
+      loadingEl.style.display = "none";
       return;
     }
 
     currentIMEI = imei;
     currentModel = model;
-    iniciarPasos();
+    iniciarChecklist();
 
   } catch (err) {
-    errorEl.textContent = 'No pudimos verificar el dispositivo. Revisá tu conexión e intentá de nuevo.';
-    errorEl.style.display = 'block';
-    btnEl.style.display = 'block';
-    loadingEl.style.display = 'none';
+    errorEl.textContent = "No pudimos verificar el dispositivo. Revisá tu conexión e intentá de nuevo.";
+    errorEl.style.display = "block";
+    btnEl.style.display = "block";
+    loadingEl.style.display = "none";
   }
 }
 
-// ─── INIT STEPS ───────────────────────────────────────────────────────────────
-function iniciarPasos() {
-  const steps = STEPS[currentModel];
+function iniciarChecklist() {
+  const steps = getSteps(currentModel, currentIMEI);
   totalSteps = steps.length;
   currentStep = 0;
   completedSteps = [];
 
-  document.getElementById('device-name-display').textContent = DEVICE_NAMES[currentModel] || currentModel;
-  document.getElementById('device-imei-display').textContent = `IMEI: ${currentIMEI}`;
+  document.getElementById("device-name-display").textContent = DEVICE_NAMES[currentModel] || currentModel;
+  document.getElementById("device-imei-display").textContent = `IMEI: ${currentIMEI}`;
 
-  const container = document.getElementById('steps-container');
-  container.innerHTML = '';
+  const container = document.getElementById("steps-container");
+  container.innerHTML = "";
 
   steps.forEach((step, i) => {
-    const card = document.createElement('div');
-    card.className = `step-card ${i === 0 ? 'active' : 'locked'}`;
+    const card = document.createElement("div");
+    card.className = `step-card ${i === 0 ? "active" : "locked"}`;
     card.id = `step-card-${i}`;
     card.innerHTML = `
       <div class="step-header">
@@ -1072,28 +769,27 @@ function iniciarPasos() {
       </div>
       <div class="step-body">
         ${step.content}
-        <button class="btn-confirm" onclick="confirmarPaso(${i})">
-          ✓ &nbsp; Listo, continuar
-        </button>
+        <div class="step-actions">
+          <button class="btn-confirm" onclick="confirmarPaso(${i})">✓ &nbsp; Sí, está hecho</button>
+          ${i > 0 ? `<button class="btn-back" onclick="volverPaso(${i})">← &nbsp; Volver al paso anterior</button>` : ""}
+        </div>
       </div>
     `;
     container.appendChild(card);
   });
 
   updateProgress();
-  showScreen('screen-steps');
+  showScreen("screen-checklist");
 }
 
-// ─── CONFIRM STEP ─────────────────────────────────────────────────────────────
 function confirmarPaso(index) {
   if (index !== currentStep) return;
-
   completedSteps.push(index);
 
   const card = document.getElementById(`step-card-${index}`);
   const numEl = document.getElementById(`step-num-${index}`);
-  card.className = 'step-card completed';
-  numEl.textContent = '✓';
+  card.className = "step-card completed";
+  numEl.textContent = "✓";
 
   currentStep++;
   updateProgress();
@@ -1104,37 +800,51 @@ function confirmarPaso(index) {
   }
 
   const nextCard = document.getElementById(`step-card-${currentStep}`);
-  nextCard.className = 'step-card active';
-  nextCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  nextCard.className = "step-card active";
+  nextCard.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-// ─── PROGRESS ─────────────────────────────────────────────────────────────────
 function updateProgress() {
   const pct = totalSteps > 0 ? (completedSteps.length / totalSteps) * 100 : 0;
-  document.getElementById('progress-fill').style.width = `${pct}%`;
+  document.getElementById("progress-fill").style.width = `${pct}%`;
 }
 
-// ─── FINAL ────────────────────────────────────────────────────────────────────
+function volverPaso(index) {
+  if (index <= 0) return;
+
+  // Lock current step
+  const currentCard = document.getElementById(`step-card-${index}`);
+  currentCard.className = "step-card locked";
+
+  // Go back one step
+  currentStep = index - 1;
+  completedSteps = completedSteps.filter(s => s < currentStep);
+
+  // Reopen previous step as active (not completed)
+  const prevCard = document.getElementById(`step-card-${currentStep}`);
+  const prevNum = document.getElementById(`step-num-${currentStep}`);
+  prevCard.className = "step-card active";
+  prevNum.textContent = currentStep + 1;
+
+  updateProgress();
+  prevCard.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 function mostrarFinal() {
   const deviceName = DEVICE_NAMES[currentModel] || currentModel;
-  document.getElementById('final-device-name').textContent = deviceName;
-
-  const msg = encodeURIComponent(`Hola, terminé la puesta en marcha del ${deviceName} (IMEI: ${currentIMEI}). ¿Podemos verificar que todo está correcto?`);
-  document.getElementById('btn-whatsapp').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
-
-  showScreen('screen-final');
+  const msg = encodeURIComponent(`Hola, completé el verificador de activación de mi ${deviceName} (IMEI: ${currentIMEI}). ¿Me ayudan con la configuración?`);
+  document.getElementById("btn-whatsapp").href = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+  showScreen("screen-final");
 }
 
-// ─── SCREEN SWITCH ────────────────────────────────────────────────────────────
 function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-// ─── ENTER KEY ────────────────────────────────────────────────────────────────
-document.getElementById('imei-input').addEventListener('keydown', e => {
-  if (e.key === 'Enter') verificarIMEI();
+document.getElementById("imei-input").addEventListener("keydown", e => {
+  if (e.key === "Enter") verificarIMEI();
 });
 </script>
 </body>
